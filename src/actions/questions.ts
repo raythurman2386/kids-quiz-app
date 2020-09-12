@@ -6,15 +6,16 @@ export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const getQuestions = (amount: number, diff: Difficulty) => (
 	dispatch: any
 ) => {
-	const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${diff}&type=multiple`;
+	// const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${diff}&type=multiple`;
+
+	const endpoint = `http://localhost:3333/questions`;
 
 	axios
 		.get(endpoint)
 		.then((res) => {
-			console.log(res.data.results, 'data coming in');
 			dispatch({
 				type: GET_QUESTIONS,
-				payload: res.data.results.map((question: Question) => ({
+				payload: res.data.map((question: Question) => ({
 					...question,
 					answers: shuffleArray([
 						...question.incorrect_answers,
