@@ -1,24 +1,12 @@
 import { shuffleArray } from '../utils';
 import axios from 'axios';
+import { Question, Difficulty } from '../types';
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 
-export type Question = {
-	category: string;
-	correct_answer: string;
-	difficulty: string;
-	incorrect_answers: string[];
-	question: string;
-	type: string;
-};
-
-export enum Difficulty {
-	EASY = 'easy',
-	MEDIUM = 'medium',
-	HARD = 'hard',
-}
-
-export const getQuestions = () => (dispatch: any) => {
-	const endpoint = `https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple`;
+export const getQuestions = (amount: number, diff: Difficulty) => (
+	dispatch: any
+) => {
+	const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${diff}&type=multiple`;
 
 	axios
 		.get(endpoint)
