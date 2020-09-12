@@ -78,8 +78,11 @@ let questions = [
 	},
 ];
 
+const shuffleArray = (arr) => [...arr].sort(() => Math.random() - 0.5);
+
 server.get('/questions', (req, res) => {
-	res.json(questions);
+	const shuffledQuestions = shuffleArray(questions);
+	res.json(shuffledQuestions);
 });
 
 server.listen(port, (err) => {
