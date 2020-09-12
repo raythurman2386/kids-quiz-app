@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { fetchQuestions, Difficulty, QuestionState } from './server/API';
+import { connect } from 'react-redux';
 import QuestionCard from './components/QuestionCard';
+import { getQuestions } from './actions/questions';
 
 // Styles
 import { GlobalStyle } from './styles/Global.style';
@@ -14,9 +15,19 @@ export type AnswerObject = {
 	correctAnswer: string;
 };
 
-function App() {
+type Props = {
+	questions: any;
+	getQuestions: any;
+};
+
+const App: React.FC<Props> = ({ questions, getQuestions }) => {
+	// FOR TESTING ONLY
+	React.useEffect(() => {
+		getQuestions();
+	}, []);
+
 	const [loading, setLoading] = useState(false);
-	const [questions, setQuestions] = useState<QuestionState[]>([]);
+	// const [questions, setQuestions] = useState<QuestionState[]>([]);
 	const [number, setNumber] = useState(0);
 	const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
 	const [score, setScore] = useState(0);
@@ -25,9 +36,6 @@ function App() {
 	const startQuiz = async () => {
 		setLoading(true);
 		setGameOver(false);
-
-		const newQuestions = await fetchQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
-		setQuestions(newQuestions);
 		setScore(0);
 		setUserAnswers([]);
 		setNumber(0);
@@ -97,6 +105,10 @@ function App() {
 			</Wrapper>
 		</>
 	);
-}
+};
 
-export default App;
+const mapStateToProps = (state: any) => ({
+	questions: state.questions.questions,
+});
+
+export default connect(mapStateToProps, { getQuestions })(App);
