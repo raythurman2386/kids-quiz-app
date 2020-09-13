@@ -1,6 +1,6 @@
-import React from 'react';
-import { QuestionCardProps } from '../types';
-import { Wrapper, ButtonWrapper } from '../styles/QuestionCard.styles';
+import React from 'react'
+import { QuestionCardProps } from '../types'
+import { Wrapper, ButtonWrapper } from '../styles/QuestionCard.styles'
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
   question,
@@ -11,7 +11,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   totalQuestions,
 }) => (
   <Wrapper>
-    <p className="number">
+    <p className='number'>
       Question: {questionNum} / {totalQuestions}
     </p>
     <p dangerouslySetInnerHTML={{ __html: question }} />
@@ -29,6 +29,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       ))}
     </div>
   </Wrapper>
-);
+)
 
-export default QuestionCard;
+export default QuestionCard

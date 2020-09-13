@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux';
-import questions from './questions';
-import game from './game';
+import { combineReducers } from 'redux'
+import questions from './questions'
+import game from './game'
 
 const reducers = {
   questions,
   game,
-};
+}
 
-export default combineReducers(reducers);
+export default combineReducers(reducers)

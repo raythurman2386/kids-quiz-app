@@ -10,4 +10,4 @@ the CLI prior to commiting code in the following ways:
 
 - `yarn run format` to apply the standards defined by eslint/prettier config.
 
-Alternatively a GitHub action is in place to format on push to ensure formatting is complete.
+Alternatively GitHub action is in place to format on push to ensure formatting is complete.
