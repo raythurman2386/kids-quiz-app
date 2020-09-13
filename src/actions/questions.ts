@@ -24,5 +24,5 @@ export const getQuestions = (amount: number, diff: Difficulty) => (
 				})),
 			});
 		})
-		.catch((err) => dispatch(err));
+		.catch((err) => console.log(err));
 };
