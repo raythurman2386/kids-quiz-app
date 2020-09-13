@@ -10,16 +10,16 @@ import rootReducer from './reducers';
 const middleware = [thunk, logger];
 
 const persistConfig = {
-	key: 'root',
-	storage,
-	stateReconciler: autoMergeLevel2,
+  key: 'root',
+  storage,
+  stateReconciler: autoMergeLevel2,
 };
 
 // @ts-ignore
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const configureStore = () =>
-	createStore(
-		persistedReducer,
-		composeWithDevTools(applyMiddleware(...middleware))
-	);
+  createStore(
+    persistedReducer,
+    composeWithDevTools(applyMiddleware(...middleware))
+  );
