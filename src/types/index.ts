@@ -9,10 +9,19 @@ export type HomeProps = {
 	questions: any;
 	getQuestions: any;
 	isLoading: boolean;
+	isGameOver: boolean;
+	setGameState: any;
+	score: number;
+	updateScore: any;
+	questionNumber: number;
+	resetGame: any;
+	userAnswers: AnswerObject[];
+	updateUserAnswers: any;
+	updateQuestionNumber: any;
 };
 
 export type QuestionCardProps = {
-	question: string;
+	question: any;
 	answers: string[];
 	callback: (e: React.MouseEvent<HTMLButtonElement>) => void;
 	userAnswer: AnswerObject | undefined;

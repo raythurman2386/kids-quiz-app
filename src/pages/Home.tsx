@@ -1,71 +1,82 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader-spinner';
 import QuestionCard from '../components/QuestionCard';
-import { getQuestions } from '../actions/questions';
-import { AnswerObject, HomeProps, Difficulty } from '../types';
+import { getQuestions, updateQuestionNumber } from '../actions/questions';
+import { HomeProps, Difficulty } from '../types';
+import {
+	setGameState,
+	resetGame,
+	updateScore,
+	updateUserAnswers,
+} from '../actions/game';
 // Styles
 import { Wrapper } from '../styles/Home.styles';
 
 const TOTAL_QUESTIONS = 10;
 
-const Home: React.FC<HomeProps> = ({ questions, getQuestions, isLoading }) => {
+const Home: React.FC<HomeProps> = ({
+	questions,
+	getQuestions,
+	isLoading,
+	isGameOver,
+	setGameState,
+	score,
+	updateScore,
+	questionNumber,
+	resetGame,
+	userAnswers,
+	updateUserAnswers,
+	updateQuestionNumber,
+}) => {
 	React.useEffect(() => {
 		getQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
 	}, []);
 
-	const [number, setNumber] = useState(0);
-	const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
-	const [score, setScore] = useState(0);
-	const [gameOver, setGameOver] = useState(true);
-
 	const startQuiz = async () => {
-		setGameOver(false);
-		setScore(0);
-		setUserAnswers([]);
-		setNumber(0);
+		await resetGame();
 		await getQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
 	};
 
 	const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
-		if (!gameOver) {
+		if (!isGameOver) {
 			// Get the user answer
 			const answer = e.currentTarget.value;
 			// Check the value against correct answer
-			const correct = questions[number].correct_answer === answer;
+			const correct = questions[questionNumber].correct_answer === answer;
 			// Add score if correct
-			if (correct) setScore((prev) => prev + 1);
+			if (correct) updateScore();
 			// Save answer in the array for user answers
 			const answerObject = {
-				question: questions[number].question,
+				question: questions[questionNumber].question,
 				answer,
 				correct,
-				correctAnswer: questions[number].correct_answer,
+				correctAnswer: questions[questionNumber].correct_answer,
 			};
 
-			setUserAnswers((prev) => [...prev, answerObject]);
+			updateUserAnswers(answerObject);
 		}
 	};
 
 	const nextQuestion = () => {
-		const nextQuestion = number + 1;
+		const nextQuestion = questionNumber + 1;
 
 		if (nextQuestion === TOTAL_QUESTIONS) {
-			setGameOver(true);
+			setGameState(true);
 		} else {
-			setNumber(nextQuestion);
+			updateQuestionNumber(nextQuestion);
 		}
 	};
 
 	return (
 		<Wrapper>
 			<h1>Kid Space</h1>
-			{gameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+			{isGameOver || userAnswers.length === TOTAL_QUESTIONS ? (
 				<button className='start' onClick={startQuiz}>
 					Start
 				</button>
 			) : null}
-			{!gameOver ? <p className='score'>Score: {score}</p> : null}
+			{!isGameOver ? <p className='score'>Score: {score}</p> : null}
 			{isLoading && (
 				<Loader
 					type='TailSpin'
@@ -75,20 +86,20 @@ const Home: React.FC<HomeProps> = ({ questions, getQuestions, isLoading }) => {
 					timeout={3000} //3 secs
 				/>
 			)}
-			{!isLoading && !gameOver && (
+			{!isLoading && !isGameOver && (
 				<QuestionCard
-					questionNum={number + 1}
+					questionNum={questionNumber + 1}
 					totalQuestions={TOTAL_QUESTIONS}
-					question={questions[number].question}
-					answers={questions[number].answers}
-					userAnswer={userAnswers ? userAnswers[number] : undefined}
+					question={questions[questionNumber].question}
+					answers={questions[questionNumber].answers}
+					userAnswer={userAnswers ? userAnswers[questionNumber] : undefined}
 					callback={checkAnswer}
 				/>
 			)}
-			{!gameOver &&
+			{!isGameOver &&
 				!isLoading &&
-				userAnswers.length === number + 1 &&
-				number !== TOTAL_QUESTIONS - 1 && (
+				userAnswers.length === questionNumber + 1 &&
+				questionNumber !== TOTAL_QUESTIONS - 1 && (
 					<button className='next' onClick={nextQuestion}>
 						Next Question
 					</button>
@@ -100,6 +111,17 @@ const Home: React.FC<HomeProps> = ({ questions, getQuestions, isLoading }) => {
 const mapStateToProps = (state: any) => ({
 	questions: state.questions.questions,
 	isLoading: state.questions.isLoading,
+	isGameOver: state.game.isGameOver,
+	score: state.game.score,
+	questionNumber: state.questions.questionNumber,
+	userAnswers: state.game.userAnswers,
 });
 
-export default connect(mapStateToProps, { getQuestions })(Home);
+export default connect(mapStateToProps, {
+	getQuestions,
+	setGameState,
+	resetGame,
+	updateScore,
+	updateUserAnswers,
+	updateQuestionNumber,
+})(Home);

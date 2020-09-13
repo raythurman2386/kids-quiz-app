@@ -1,11 +1,13 @@
 import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
-import autoMergeLevel2 from 'redux-persist/es/stateReconciler/autoMergeLevel2';
+
+const middleware = [thunk, logger];
 
 const persistConfig = {
 	key: 'root',
@@ -16,11 +18,8 @@ const persistConfig = {
 // @ts-ignore
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const middleware = [thunk, logger];
-
 export const configureStore = () =>
 	createStore(
 		persistedReducer,
-		// @ts-ignore
 		composeWithDevTools(applyMiddleware(...middleware))
 	);

@@ -2,12 +2,14 @@ import {
 	GET_QUESTIONS_START,
 	GET_QUESTIONS_SUCCESS,
 	GET_QUESTIONS_FAILED,
+	UPDATE_QUESTION_NUMBER,
 } from '../actions/questions';
 
 const initialState = {
 	isLoading: false,
 	questions: [],
 	error: '',
+	questionNumber: 0,
 };
 
 export default function (state = initialState, action: any) {
@@ -30,6 +32,11 @@ export default function (state = initialState, action: any) {
 				questions: [],
 				isLoading: false,
 				error: action.payload,
+			};
+		case UPDATE_QUESTION_NUMBER:
+			return {
+				...state,
+				questionNumber: action.payload,
 			};
 		default:
 			return state;
