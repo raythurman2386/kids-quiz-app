@@ -1,4 +1,8 @@
 import { combineReducers } from 'redux';
 import questions from './questions';
 
-export default combineReducers({ questions });
+const reducers = {
+	questions,
+};
+
+export default combineReducers(reducers);

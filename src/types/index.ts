@@ -8,6 +8,7 @@ export type AnswerObject = {
 export type HomeProps = {
 	questions: any;
 	getQuestions: any;
+	isLoading: boolean;
 };
 
 export type QuestionCardProps = {

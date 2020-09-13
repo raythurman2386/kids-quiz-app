@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import Loader from 'react-loader-spinner';
 import QuestionCard from '../components/QuestionCard';
 import { getQuestions } from '../actions/questions';
 import { AnswerObject, HomeProps, Difficulty } from '../types';
@@ -8,26 +9,22 @@ import { Wrapper } from '../styles/Home.styles';
 
 const TOTAL_QUESTIONS = 10;
 
-const Home: React.FC<HomeProps> = ({ questions, getQuestions }) => {
+const Home: React.FC<HomeProps> = ({ questions, getQuestions, isLoading }) => {
 	React.useEffect(() => {
 		getQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
 	}, []);
 
-	const [loading, setLoading] = useState(false);
-	// const [questions, setQuestions] = useState<QuestionState[]>([]);
 	const [number, setNumber] = useState(0);
 	const [userAnswers, setUserAnswers] = useState<AnswerObject[]>([]);
 	const [score, setScore] = useState(0);
 	const [gameOver, setGameOver] = useState(true);
 
 	const startQuiz = async () => {
-		setLoading(true);
-		await getQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
 		setGameOver(false);
 		setScore(0);
 		setUserAnswers([]);
 		setNumber(0);
-		setLoading(false);
+		await getQuestions(TOTAL_QUESTIONS, Difficulty.EASY);
 	};
 
 	const checkAnswer = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -69,8 +66,16 @@ const Home: React.FC<HomeProps> = ({ questions, getQuestions }) => {
 				</button>
 			) : null}
 			{!gameOver ? <p className='score'>Score: {score}</p> : null}
-			{loading && <p className='loading'>Loading Questions...</p>}
-			{!loading && !gameOver && (
+			{isLoading && (
+				<Loader
+					type='TailSpin'
+					color='#FFF'
+					height={100}
+					width={100}
+					timeout={3000} //3 secs
+				/>
+			)}
+			{!isLoading && !gameOver && (
 				<QuestionCard
 					questionNum={number + 1}
 					totalQuestions={TOTAL_QUESTIONS}
@@ -81,7 +86,7 @@ const Home: React.FC<HomeProps> = ({ questions, getQuestions }) => {
 				/>
 			)}
 			{!gameOver &&
-				!loading &&
+				!isLoading &&
 				userAnswers.length === number + 1 &&
 				number !== TOTAL_QUESTIONS - 1 && (
 					<button className='next' onClick={nextQuestion}>
@@ -94,6 +99,7 @@ const Home: React.FC<HomeProps> = ({ questions, getQuestions }) => {
 
 const mapStateToProps = (state: any) => ({
 	questions: state.questions.questions,
+	isLoading: state.questions.isLoading,
 });
 
 export default connect(mapStateToProps, { getQuestions })(Home);
