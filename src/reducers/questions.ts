@@ -19,6 +19,7 @@ export default function (state = initialState, action: any) {
         ...state,
         questions: [],
         isLoading: true,
+        questionNumber: 0,
       };
     case GET_QUESTIONS_SUCCESS:
       return {

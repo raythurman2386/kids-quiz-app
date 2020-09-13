@@ -34,7 +34,6 @@ export default function (state = initialState, action: any) {
         isGameOver: false,
         userAnswers: [],
         score: 0,
-        number: 0,
         error: '',
       };
     default:
