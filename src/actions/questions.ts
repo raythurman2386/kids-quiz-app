@@ -11,7 +11,8 @@ export const getQuestions = (amount: number, diff: Difficulty) => (
 ) => {
   // const endpoint = `https://opentdb.com/api.php?amount=${amount}&difficulty=${diff}&type=multiple`;
 
-  const endpoint = `http://localhost:3333/multiplication-tables`;
+  // const endpoint = `http://localhost:3333/multiplication-tables`;
+  const endpoint = `https://kidspace.herokuapp.com/multiplication-tables`;
   dispatch({ type: GET_QUESTIONS_START });
 
   axios
