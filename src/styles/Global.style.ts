@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components'
-import BGImage from '../images/kidspace.jpg'
+import { createGlobalStyle } from 'styled-components';
+import BGImage from '../images/kidspace.jpg';
 
 export const GlobalStyle = createGlobalStyle`
 * {
@@ -22,4 +22,4 @@ body {
   display: flex;
   justify-content: center;
 }
-`
+`;

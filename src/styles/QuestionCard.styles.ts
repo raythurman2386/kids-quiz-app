@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   max-width: 1100px;
@@ -13,12 +13,12 @@ export const Wrapper = styled.div`
   p {
     font-size: 1rem;
   }
-`
+`;
 
 type ButtonWrapperProps = {
-  correct: boolean
-  userClicked: boolean
-}
+  correct: boolean;
+  userClicked: boolean;
+};
 
 export const ButtonWrapper = styled.div<ButtonWrapperProps>`
   transition: all 0.3s ease;
@@ -46,4 +46,4 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
     color: #fff;
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
   }
-`
+`;

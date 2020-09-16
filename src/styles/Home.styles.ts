@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Wrapper = styled.main`
   display: flex;
@@ -47,4 +47,4 @@ export const Wrapper = styled.main`
   .start {
     max-width: 200px;
   }
-`
+`;
