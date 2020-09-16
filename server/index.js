@@ -7,7 +7,7 @@ const server = express();
 
 server.use(express.json());
 server.use(cors({ origin: '*' }));
-
+server.options('*', cors());
 const sendUserError = (msg, res) => {
   res.status(422);
   res.json({ Error: msg });
