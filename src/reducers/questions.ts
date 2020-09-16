@@ -4,6 +4,7 @@ import {
   GET_QUESTIONS_FAILED,
   UPDATE_QUESTION_NUMBER,
 } from '../actions/questions';
+import { shuffleArray } from '../utils';
 
 const initialState = {
   isLoading: false,
@@ -24,7 +25,7 @@ export default function (state = initialState, action: any) {
     case GET_QUESTIONS_SUCCESS:
       return {
         ...state,
-        questions: action.payload,
+        questions: shuffleArray(action.payload),
         isLoading: false,
         questionNumber: 0,
       };

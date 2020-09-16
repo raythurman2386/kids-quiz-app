@@ -15,7 +15,7 @@ function Question(this: QTypes, number: number, multiplicative: number) {
 
 export function generateQuestions(num: number) {
   const questions = [];
-  for (let i = 0; i < 10; ++i) {
+  for (let i = 1; i < 11; ++i) {
     // @ts-ignore
     let question = new Question(num, i);
     questions.push(question);
