@@ -22,8 +22,7 @@ export function generateQuestions(num: number) {
     prevNumbers = [];
   }
   for (let i = 1; i < 11; ++i) {
-    // @ts-ignore
-    let question = new Question(num, i);
+    let question: QTypes = new (Question as any)(num, i);
     questions.push(question);
     prevNumbers.push(num);
   }
