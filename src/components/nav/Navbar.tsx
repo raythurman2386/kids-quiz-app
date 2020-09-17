@@ -9,9 +9,9 @@ const Navbar = () => {
     <Wrapper data-testid='navbar-component'>
       <h1 data-testid='nav-title'>Kidspace</h1>
       <nav data-testid='nav-links'>
-        <a href='#'>Home</a>
-        <a href='#'>Dashboard</a>
-        <a href='#'>Profile</a>
+        <Link to='#'>Home</Link>
+        <Link to='#'>Dashboard</Link>
+        <Link to='#'>Profile</Link>
       </nav>
     </Wrapper>
   );

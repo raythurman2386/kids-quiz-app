@@ -10,9 +10,8 @@ export const getQuestions = (amount: number, diff: Difficulty) => async (
 ) => {
   dispatch({ type: GET_QUESTIONS_START });
   try {
-    const questions = await generateQuestions(
-      Math.floor(Math.random() * 10) + 1
-    );
+    let num = Math.floor(Math.random() * 10) + 1;
+    const questions = await generateQuestions(num);
     dispatch({
       type: GET_QUESTIONS_SUCCESS,
       payload: questions.map((question: Question) => ({
