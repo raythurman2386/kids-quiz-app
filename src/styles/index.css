@@ -1,3 +1,10 @@
 :root {
-  --primary: red;
+  --primary: #0085a3;
+
+  --white: #ebfeff;
+
+  --border-radius: 10px;
+
+  /* Spacing */
+  --spacing: 2.5rem;
 }

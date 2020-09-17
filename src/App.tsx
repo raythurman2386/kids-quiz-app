@@ -5,14 +5,17 @@ import { Route, Switch } from 'react-router-dom';
 import { GlobalStyle } from './styles/Global.style';
 // Pages
 import Home from './pages/Home';
+import Layout from './pages/Layout';
 
 const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <Switch>
-        <Route exact path='/' component={Home} />
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home} />
+        </Switch>
+      </Layout>
     </>
   );
 };
