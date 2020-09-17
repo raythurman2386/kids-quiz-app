@@ -11,6 +11,7 @@ Object {
       >
         <p
           class="number"
+          data-testid="question-number"
         >
           Question: 
           1
@@ -80,6 +81,7 @@ Object {
     >
       <p
         class="number"
+        data-testid="question-number"
       >
         Question: 
         1
