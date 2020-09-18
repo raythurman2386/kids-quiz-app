@@ -7,6 +7,8 @@ import { GlobalStyle } from './styles/Global.style';
 // Pages
 import Home from './pages/Home';
 import Layout from './pages/Layout';
+import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 const App: React.FC = () => {
   return (
@@ -15,6 +17,8 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={Home} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/profile' component={Profile} />
         </Switch>
       </Layout>
     </Router>

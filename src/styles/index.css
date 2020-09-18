@@ -1,7 +1,12 @@
 :root {
+  /* Colors */
   --primary: #0085a3;
-
   --white: #ebfeff;
+  /* Gradients */
+  --blue-gradient: linear-gradient(180deg, #e0c3fc, #8ec5fc);
+  --purple-gradient: linear-gradient(180deg, #667eea, #764ba2);
+  --pink-gradient: linear-gradient(180deg, #fccb90, #d57eeb);
+  --dk-green-gradient: linear-gradient(180deg, #f4d03f, #16a085);
 
   --border-radius: 10px;
 
