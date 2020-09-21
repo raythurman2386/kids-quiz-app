@@ -19,8 +19,7 @@ authRouter
         .status(201)
         .json({ message: 'You have been successfully registered.' });
     } catch (error) {
-      console.error(error);
-      // next(error);
+      next(error);
     }
   })
 
@@ -48,8 +47,7 @@ authRouter
         });
       }
     } catch (error) {
-      console.error(error);
-      // next(error);
+      next(error);
     }
   });
 

@@ -15,6 +15,15 @@ server.get('/multiplication-tables', (req, res) => {
   res.json(shuffledQuestions);
 });
 
+server.use((_req, res, _next) => {
+  res.status(404).json({ message: 'Route not found' });
+});
+
+server.use((err, _req, res, _next) => {
+  console.error(err);
+  res.status(500).json({ message: 'Something has went terribly wrong' });
+});
+
 server.listen(port, () => {
   console.log(`server is listening on port ${port}`);
 });
