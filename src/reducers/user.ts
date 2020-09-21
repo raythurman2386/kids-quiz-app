@@ -1,7 +1,7 @@
 import {
   LOGIN_USER_START,
   LOGIN_USER_SUCCESS,
-  REGISTER_USER_START,
+  LOGIN_USER_FAIL,
 } from '../actions/user';
 
 const initialState = {
@@ -18,7 +18,6 @@ const initialState = {
 export default function (state = initialState, action: any) {
   switch (action.type) {
     case LOGIN_USER_START:
-    case REGISTER_USER_START:
       return {
         ...state,
         isLoggedIn: false,
@@ -28,6 +27,12 @@ export default function (state = initialState, action: any) {
         ...state,
         isLoggedIn: true,
         user: action.payload,
+      };
+    case LOGIN_USER_FAIL:
+      return {
+        ...state,
+        isLoggedIn: false,
+        jwt: '',
       };
     default:
       return state;

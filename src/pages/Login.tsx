@@ -13,7 +13,7 @@ const Login = () => {
 
   return (
     <Wrapper onSubmit={handleSubmit}>
-      <h1>Login Page</h1>
+      <h3>Login Page</h3>
       <input
         type='text'
         placeholder='Username'
