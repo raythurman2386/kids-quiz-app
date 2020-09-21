@@ -16,8 +16,8 @@ const Navbar = ({ isLoggedIn }: any) => {
           </>
         ) : (
           <>
-            <Link to='#'>Login</Link>
-            <Link to='#'>Register</Link>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
           </>
         )}
       </nav>
