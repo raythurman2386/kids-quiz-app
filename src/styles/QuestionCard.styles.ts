@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   max-width: 1100px;
-  min-width: 320px;
-  background: #ebfeff;
-  border-radius: 10px;
-  border: 2px solid #0085a3;
+  min-width: 380px;
+  background: var(--white);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary);
   padding: 20px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
   text-align: center;
@@ -40,10 +40,10 @@ export const ButtonWrapper = styled.div<ButtonWrapperProps>`
         : !correct && userClicked
         ? 'linear-gradient(90deg, #FF5656, #C16868)'
         : 'linear-gradient(90deg, #56ccff, #6eafb4)'};
-    border: 3px solid #ffffff;
+    border: 3px solid var(--white);
     box-shadow: 1px 2px 0px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    color: #fff;
+    border-radius: var(--border-radius);
+    color: var(--white);
     text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.25);
   }
 `;
