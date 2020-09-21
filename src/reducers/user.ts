@@ -12,7 +12,6 @@ const initialState = {
     username: '',
     email: '',
     role: '',
-    provider: '',
   },
 };
 
