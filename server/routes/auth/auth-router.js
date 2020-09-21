@@ -11,7 +11,7 @@ authRouter
   .post('/register', validateRegister(), async (req, res, next) => {
     try {
       let user = req.body;
-      const hashPw = await bcrypt.hashPw(user.password, 12);
+      const hashPw = await bcrypt.hash(user.password, 12);
       user.password = hashPw;
 
       await User.add(user);
