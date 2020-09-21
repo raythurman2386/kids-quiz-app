@@ -7,7 +7,8 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import rootReducer from './reducers';
 
-const middleware = [thunk, logger];
+const middleware =
+  process.env.NODE_ENV !== 'production' ? [thunk, logger] : [thunk];
 
 const persistConfig = {
   key: 'root',

@@ -20,6 +20,10 @@ export type HomeProps = {
   updateQuestionNumber: any;
 };
 
+export type NavProps = {
+  isLoggedIn: boolean;
+};
+
 export type QuestionCardProps = {
   question: any;
   answers: string[];

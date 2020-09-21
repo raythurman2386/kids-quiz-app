@@ -13,13 +13,11 @@ html {
 }
 
 body {
-  margin: 0;
   background-image: url(${BGImage});
   // background-image: url(https://kyber.io/orz/src/1334165999292471.png)
   background-size: cover;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
+  width: 100%;
 }
 `;
