@@ -10,8 +10,8 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   questionNum,
   totalQuestions,
 }) => (
-  <Wrapper>
-    <p className='number'>
+  <Wrapper data-testid='question-card-wrapper'>
+    <p className='number' data-testid='question-number'>
       Question: {questionNum} / {totalQuestions}
     </p>
     <p dangerouslySetInnerHTML={{ __html: question }} />

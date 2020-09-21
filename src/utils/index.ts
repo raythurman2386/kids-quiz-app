@@ -14,11 +14,17 @@ function Question(this: QTypes, number: number, multiplicative: number) {
 }
 
 export function generateQuestions(num: number) {
+  let prevNumbers: number[] = [];
   const questions = [];
+  if (prevNumbers.includes(num)) {
+    num = Math.floor(Math.random() * 10) + 1;
+  } else if (prevNumbers.length === 10) {
+    prevNumbers = [];
+  }
   for (let i = 1; i < 11; ++i) {
-    // @ts-ignore
-    let question = new Question(num, i);
+    let question: QTypes = new (Question as any)(num, i);
     questions.push(question);
+    prevNumbers.push(num);
   }
   return questions;
 }

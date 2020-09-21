@@ -67,12 +67,6 @@ const Home: React.FC<HomeProps> = ({
 
   return (
     <Wrapper>
-      <h1>Kid Space</h1>
-      {isGameOver || userAnswers.length === TOTAL_QUESTIONS ? (
-        <button className='start' onClick={startQuiz}>
-          Start
-        </button>
-      ) : null}
       {!isGameOver ? <p className='score'>Score: {score}</p> : null}
       {isLoading && (
         <Loader
@@ -93,6 +87,11 @@ const Home: React.FC<HomeProps> = ({
           callback={checkAnswer}
         />
       )}
+      {isGameOver || userAnswers.length === TOTAL_QUESTIONS ? (
+        <button className='start' onClick={startQuiz}>
+          Start
+        </button>
+      ) : null}
       {!isGameOver &&
         !isLoading &&
         userAnswers.length === questionNumber + 1 &&
