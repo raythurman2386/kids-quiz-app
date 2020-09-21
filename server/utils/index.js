@@ -13,7 +13,7 @@ function Question(number, multiplicative) {
 
 function generateQuestions(num) {
   const questions = [];
-  for (let i = 0; i < 10; ++i) {
+  for (let i = 1; i < 11; ++i) {
     let question = new Question(num, i);
     questions.push(question);
   }

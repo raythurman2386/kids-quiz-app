@@ -25,6 +25,7 @@ export const getQuestions = (amount: number, diff: Difficulty) => async (
   } catch (error) {
     dispatch({ type: GET_QUESTIONS_FAILED, payload: error.response });
   }
+  // const endpoint = 'http://localhost:3333/multiplication-tables';
   // axios
   //   .get(endpoint)
   //   .then(res => {
