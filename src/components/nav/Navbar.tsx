@@ -1,9 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Wrapper } from '../../styles/Nav.style';
+import { logoutUser } from '../../actions/user';
 
-const Navbar = ({ isLoggedIn }: any) => {
+const Navbar = ({ isLoggedIn, logoutUser, history }: any) => {
+  const handleClick = (e: any) => {
+    logoutUser();
+    history.push('/');
+  };
+
   return (
     <Wrapper data-testid='navbar-component'>
       <h1 data-testid='nav-title'>Kidspace</h1>
@@ -13,6 +19,9 @@ const Navbar = ({ isLoggedIn }: any) => {
           <>
             <Link to='/dashboard'>Dashboard</Link>
             <Link to='/profile'>Profile</Link>
+            <Link to='/' onClick={e => handleClick(e)}>
+              Logout
+            </Link>
           </>
         ) : (
           <>
@@ -29,4 +38,4 @@ const mapStateToProps = (state: any) => ({
   isLoggedIn: state.user.isLoggedIn,
 });
 
-export default connect(mapStateToProps, null)(Navbar);
+export default withRouter(connect(mapStateToProps, { logoutUser })(Navbar));

@@ -1,19 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
 import { Wrapper } from '../styles/Auth.style';
+import { loginUser } from '../actions/user';
 
-const Login = () => {
+const Login = ({ loginUser, userMessage, history, isLoading }: any) => {
   const [username, handleUsername] = useInput('');
   const [password, handlePassword] = useInput('');
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log({ username, password });
+    const user = { username, password };
+    loginUser(user);
+    !isLoading && history.push('/');
   };
 
   return (
     <Wrapper onSubmit={handleSubmit}>
       <h3>Login Page</h3>
+      {userMessage && <p>{userMessage}</p>}
       <input
         type='text'
         placeholder='Username'
@@ -33,4 +39,9 @@ const Login = () => {
   );
 };
 
-export default Login;
+const mapStateToProps = (state: any) => ({
+  userMessage: state.user.message,
+  isLoading: state.user.isLoading,
+});
+
+export default withRouter(connect(mapStateToProps, { loginUser })(Login));

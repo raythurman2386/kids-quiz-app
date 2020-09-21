@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
@@ -9,11 +9,12 @@ const Register = (props: any) => {
   const [email, handleEmail] = useInput('');
   const [password, handlePassword] = useInput('');
   const [role, handleRole] = useInput('');
-  const [message, setMessage] = React.useState('');
+  const [message, setMessage] = useState('');
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
     const user = { username, email, password, role };
+    setMessage('');
     axios
       .post(`http://localhost:3333/api/auth/register`, user)
       .then(res => {
