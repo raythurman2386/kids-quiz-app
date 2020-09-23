@@ -25,6 +25,18 @@ export const Wrapper = styled.form`
     border: 1px solid var(--primary);
   }
 
+  select {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    width: 210px;
+    font-size: 0.8rem;
+    border: 1px solid var(--primary);
+    overflow: hidden;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
   .btn__auth {
     cursor: pointer;
     background: linear-gradient(180deg, var(--white), #ffcc91);
