@@ -7,7 +7,10 @@ export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_FAIL = 'REGISTER_USER_FAIL';
 export const LOGOUT_USER = 'LOGOUT_USER';
 
-export const loginUser = (user: any, history: any) => (dispatch: any) => {
+export const loginUser = (
+  user: { username: string; password: string },
+  history: any
+) => (dispatch: any) => {
   dispatch({ type: LOGIN_USER_START });
   const endpoint = process.env.REACT_APP_BASE_URL
     ? `${process.env.REACT_APP_BASE_URL}/auth/login`

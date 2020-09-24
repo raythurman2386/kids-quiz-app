@@ -47,6 +47,8 @@ function validateLogin() {
       return res.status(400).json({ message: 'Incorrect Username' });
     }
 
+    const { password, ...rest } = username;
+    req.user = { ...rest };
     next();
   };
 }
