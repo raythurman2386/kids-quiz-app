@@ -97,4 +97,46 @@ describe('Tests for login route', () => {
     expect(res.type).toBe('application/json');
     expect(res.body.message).toContain('Welcome');
   });
+  test('should fail login due to no username', async () => {
+    const user = {
+      password: 'test',
+    };
+
+    const res = await supertest(server).post('/api/auth/login').send(user);
+    expect(res.status).toBe(400);
+    expect(res.type).toBe('application/json');
+    expect(res.body.message).toContain('supply');
+  });
+  test('should fail login due to no password', async () => {
+    const user = {
+      username: 'test',
+    };
+
+    const res = await supertest(server).post('/api/auth/login').send(user);
+    expect(res.status).toBe(400);
+    expect(res.type).toBe('application/json');
+    expect(res.body.message).toContain('supply');
+  });
+  test('should fail login due to no incorrect username', async () => {
+    const user = {
+      username: 'test53452',
+      password: 'test',
+    };
+
+    const res = await supertest(server).post('/api/auth/login').send(user);
+    expect(res.status).toBe(400);
+    expect(res.type).toBe('application/json');
+    expect(res.body.message).toContain('Incorrect');
+  });
+  test('should fail login due to no incorrect password', async () => {
+    const user = {
+      username: 'test',
+      password: 'testing',
+    };
+
+    const res = await supertest(server).post('/api/auth/login').send(user);
+    expect(res.status).toBe(401);
+    expect(res.type).toBe('application/json');
+    expect(res.body.message).toContain('Invalid');
+  });
 });
