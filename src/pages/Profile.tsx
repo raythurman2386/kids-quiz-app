@@ -1,14 +1,13 @@
 import React from 'react';
+import { Wrapper } from './Dashboard';
 
 const Profile = () => {
   return (
-    <div>
-      Profile
-      {/* Children / Parent profiles */}
-      {/* Will conditionally render the child profile */}
-      {/* If the user role a child and display the */}
-      {/* parents if user role is a parent */}
-    </div>
+    <Wrapper>
+      <p>Profile</p>
+      <p>This page is currently under development.</p>
+      <p>Check back shortly to see the games dashboard!</p>
+    </Wrapper>
   );
 };
 
