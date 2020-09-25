@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 
 // Styles
 import { GlobalStyle } from './styles/Global.style';
@@ -21,8 +22,8 @@ const App: React.FC = () => {
           <Route exact path='/' component={Home} />
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
-          <Route path='/dashboard' component={Dashboard} />
-          <Route path='/profile' component={Profile} />
+          <PrivateRoute path='/dashboard' component={Dashboard} />
+          <PrivateRoute path='/profile' component={Profile} />
         </Switch>
       </Layout>
     </Router>

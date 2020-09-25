@@ -19,6 +19,7 @@ export const loginUser = (
     .post(endpoint, user)
     .then(res => {
       dispatch({ type: LOGIN_USER_SUCCESS, payload: res.data });
+      localStorage.setItem('token', res.data.jwt);
       history.push('/');
     })
     .catch(err => {
