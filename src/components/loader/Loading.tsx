@@ -1,7 +1,8 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import { LoaderProps } from '../../types';
 
-const Loading = ({ height, width, color = '#fff' }: any) => {
+const Loading: React.FC<LoaderProps> = ({ height, width, color = '#fff' }) => {
   return (
     <Loader
       type='TailSpin'

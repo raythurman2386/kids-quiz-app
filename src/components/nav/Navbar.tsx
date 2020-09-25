@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import { Wrapper } from '../../styles/Nav.style';
 import { logoutUser } from '../../actions/user';
+import { NavProps } from '../../types';
 
-const Navbar = ({ isLoggedIn, logoutUser, history }: any) => {
+const Navbar: React.FC<NavProps> = ({ isLoggedIn, logoutUser, history }) => {
   const handleClick = (e: any) => {
     logoutUser();
     history.push('/');

@@ -5,8 +5,14 @@ import { useInput } from '../hooks/useInput';
 import { Wrapper } from '../styles/Auth.style';
 import { loginUser } from '../actions/user';
 import Loading from '../components/loader/Loading';
+import { LoginProps } from '../types';
 
-const Login = ({ loginUser, userMessage, history, isLoading }: any) => {
+const Login: React.FC<LoginProps> = ({
+  loginUser,
+  userMessage,
+  history,
+  isLoading,
+}) => {
   const [username, handleUsername] = useInput('');
   const [password, handlePassword] = useInput('');
 
