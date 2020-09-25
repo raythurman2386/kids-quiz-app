@@ -4,8 +4,9 @@ import { withRouter } from 'react-router-dom';
 import { useInput } from '../hooks/useInput';
 import { Wrapper } from '../styles/Auth.style';
 import { loginUser } from '../actions/user';
+import Loading from '../components/loader/Loading';
 
-const Login = ({ loginUser, userMessage, history }: any) => {
+const Login = ({ loginUser, userMessage, history, isLoading }: any) => {
   const [username, handleUsername] = useInput('');
   const [password, handlePassword] = useInput('');
 
@@ -32,7 +33,7 @@ const Login = ({ loginUser, userMessage, history }: any) => {
         onChange={(e: any) => handlePassword(e.target.value)}
       />
       <button type='submit' className='btn__auth'>
-        Login
+        {isLoading ? <Loading height={20} width={20} color='#000' /> : 'Login'}
       </button>
     </Wrapper>
   );
@@ -40,6 +41,7 @@ const Login = ({ loginUser, userMessage, history }: any) => {
 
 const mapStateToProps = (state: any) => ({
   userMessage: state.user.message,
+  isLoading: state.user.isLoading,
 });
 
 export default withRouter(connect(mapStateToProps, { loginUser })(Login));

@@ -7,6 +7,7 @@ import {
 
 const initialState = {
   isLoggedIn: false,
+  isLoading: false,
   jwt: '',
   message: '',
   user: {
@@ -22,6 +23,7 @@ export default function (state = initialState, action: any) {
     case LOGIN_USER_START:
       return {
         ...state,
+        isLoading: true,
         isLoggedIn: false,
         message: '',
       };
@@ -29,6 +31,7 @@ export default function (state = initialState, action: any) {
       return {
         ...state,
         isLoggedIn: true,
+        isLoading: false,
         user: action.payload.user,
         jwt: action.payload.jwt,
         message: action.payload.message,
@@ -37,6 +40,7 @@ export default function (state = initialState, action: any) {
       return {
         ...state,
         isLoggedIn: false,
+        isLoading: false,
         jwt: '',
         message: action.payload.message,
       };
@@ -44,6 +48,7 @@ export default function (state = initialState, action: any) {
       return {
         ...state,
         isLoggedIn: false,
+        isLoading: false,
         jwt: '',
         message: '',
         user: {
