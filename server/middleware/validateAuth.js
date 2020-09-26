@@ -14,16 +14,16 @@ function validateRegister() {
       return res.status(400).json({ message: 'Please Provide All Fields' });
     }
 
-    const email = await User.findBy({ email: req.body.email });
-    if (email) {
-      return res.status(400).json({ message: 'A user with that email exists' });
-    }
-
     const username = await User.findBy({ username: req.body.username });
     if (username) {
       return res
         .status(400)
         .json({ message: 'A user with that username exists' });
+    }
+
+    const email = await User.findBy({ email: req.body.email });
+    if (email) {
+      return res.status(400).json({ message: 'A user with that email exists' });
     }
 
     next();
@@ -35,13 +35,20 @@ function validateRegister() {
  * password
  */
 function validateLogin() {
-  return (req, res, next) => {
+  return async (req, res, next) => {
     if (!req.body.username || !req.body.password) {
       return res
         .status(400)
         .json({ message: 'Please supply a username and a password' });
     }
 
+    const username = await User.findBy({ username: req.body.username });
+    if (!username) {
+      return res.status(400).json({ message: 'Incorrect Username' });
+    }
+
+    const { password, ...rest } = username;
+    req.user = { ...rest };
     next();
   };
 }

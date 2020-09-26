@@ -20,8 +20,23 @@ export type HomeProps = {
   updateQuestionNumber: any;
 };
 
+export type LoginProps = {
+  loginUser: any;
+  userMessage: string;
+  history: any;
+  isLoading: boolean;
+};
+
+export type LoaderProps = {
+  height: number;
+  width: number;
+  color?: string;
+};
+
 export type NavProps = {
   isLoggedIn: boolean;
+  logoutUser: any;
+  history: any;
 };
 
 export type QuestionCardProps = {

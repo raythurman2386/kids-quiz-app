@@ -1,7 +1,8 @@
-![React](https://img.shields.io/badge/react-v16.7.0--alpha.2-blue.svg)
+![React](https://img.shields.io/badge/react-v16.13.1-blue)
+![Redux](https://img.shields.io/badge/redux-v4.0.5-blue)
 ![Typescript](https://img.shields.io/npm/types/typescript.svg?style=flat)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://choosealicense.com/licenses/mit/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 **Kid Space** is an application that allows **students** to currently practice on their 1-10 multiplication tables.

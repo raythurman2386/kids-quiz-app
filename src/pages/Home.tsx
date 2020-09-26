@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Loader from 'react-loader-spinner';
+import Loading from '../components/loader/Loading';
 import QuestionCard from '../components/cards/QuestionCard';
 import { getQuestions, updateQuestionNumber } from '../actions/questions';
 import { HomeProps, Difficulty } from '../types';
@@ -68,15 +68,7 @@ const Home: React.FC<HomeProps> = ({
   return (
     <Wrapper>
       {!isGameOver ? <p className='score'>Score: {score}</p> : null}
-      {isLoading && (
-        <Loader
-          type='TailSpin'
-          color='#FFF'
-          height={100}
-          width={100}
-          timeout={3000} //3 secs
-        />
-      )}
+      {isLoading && <Loading height={100} width={100} />}
       {!isLoading && !isGameOver && (
         <QuestionCard
           questionNum={questionNumber + 1}
