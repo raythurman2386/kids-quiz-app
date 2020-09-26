@@ -10,6 +10,9 @@ class Model {
   findBy(filter) {
     return db(this.tableName).where(filter).first();
   }
+  findAll(filter) {
+    return db(this.tableName).where(filter);
+  }
   add(newItem) {
     return db(this.tableName).insert(newItem).returning('*');
   }

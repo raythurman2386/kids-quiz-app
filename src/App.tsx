@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Switch } from 'react-router-dom';
+import PrivateRoute from './utils/PrivateRoute';
 
 // Styles
 import { GlobalStyle } from './styles/Global.style';
@@ -9,6 +10,8 @@ import Home from './pages/Home';
 import Layout from './pages/Layout';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
@@ -17,8 +20,10 @@ const App: React.FC = () => {
       <Layout>
         <Switch>
           <Route exact path='/' component={Home} />
-          <Route path='/dashboard' component={Dashboard} />
-          <Route path='/profile' component={Profile} />
+          <Route path='/register' component={Register} />
+          <Route path='/login' component={Login} />
+          <PrivateRoute path='/dashboard' component={Dashboard} />
+          <PrivateRoute path='/profile' component={Profile} />
         </Switch>
       </Layout>
     </Router>

@@ -1,15 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { Wrapper } from './Dashboard';
 
-const Profile = () => {
+const Profile = ({ welcomeMessage }: any) => {
   return (
-    <div>
-      Profile
-      {/* Children / Parent profiles */}
-      {/* Will conditionally render the child profile */}
-      {/* If the user role a child and display the */}
-      {/* parents if user role is a parent */}
-    </div>
+    <Wrapper>
+      <p>{welcomeMessage}</p>
+      <p>This page is currently under development.</p>
+      <p>Check back shortly to see your user profile!</p>
+      <p>If you are a parent, your childs progress will be here as well</p>
+    </Wrapper>
   );
 };
 
-export default Profile;
+const mapStateToProps = (state: any) => ({
+  welcomeMessage: state.user.message,
+});
+
+export default connect(mapStateToProps, null)(Profile);
