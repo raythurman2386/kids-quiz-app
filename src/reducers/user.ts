@@ -15,6 +15,7 @@ const initialState = {
     username: '',
     email: '',
     role: '',
+    children: [],
   },
 };
 
@@ -56,6 +57,7 @@ export default function (state = initialState, action: any) {
           username: '',
           email: '',
           role: '',
+          children: [],
         },
       };
     default:
