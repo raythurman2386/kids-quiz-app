@@ -40,14 +40,18 @@ export default connect(mapStateToProps, {})(Profile);
 const NewWrapper = styled(Wrapper)`
   display: flex;
   .user_profile {
-    width: 30%;
+    width: 20%;
 
     @media (max-width: 1000px) {
       display: none;
     }
   }
   .child_progress {
-    width: 70%;
+    width: 80%;
+
+    > h3 {
+      margin-bottom: 2rem;
+    }
 
     @media (max-width: 1000px) {
       width: 100%;

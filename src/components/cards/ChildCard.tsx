@@ -9,6 +9,7 @@ const ChildCard = ({ child }: any) => {
       <p>Child Username: {child.username}</p>
       <p>Child Email: {child.email}</p>
       <p>Average: {(Math.floor(Math.random() * 10) + 1) * 10}%</p>
+      {/* Will add a graph component for childs test scores */}
     </Wrapper>
   );
 };
