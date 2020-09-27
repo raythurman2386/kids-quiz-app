@@ -10,6 +10,9 @@ class Model {
   findBy(filter) {
     return db(this.tableName).where(filter).first();
   }
+  findChildren(filter) {
+    return db(this.tablename).where({ parent_email: filter });
+  }
   findAll(filter) {
     return db(this.tableName).where(filter);
   }
