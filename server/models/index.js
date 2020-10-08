@@ -28,5 +28,6 @@ class Model {
 }
 
 const User = new Model('users');
+const Test = new Model('tests');
 
-module.exports = { User };
+module.exports = { User, Test };

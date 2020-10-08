@@ -20,14 +20,6 @@ userRouter
     } catch (err) {
       next(err);
     }
-  })
-  .get('/user-tests/:id', async (req, res, next) => {
-    try {
-      const tests = await User.findAll({ user_id: req.params.id });
-      return res.status(200).json(tests);
-    } catch (err) {
-      next(err);
-    }
   });
 
 module.exports = userRouter;
