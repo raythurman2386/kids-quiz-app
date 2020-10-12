@@ -31,6 +31,9 @@ authRouter
 
       if (user && verifyPw) {
         const token = generateToken(user);
+        const children = await User.findAll({
+          parent_email: user.email,
+        });
         return res.status(200).json({
           message: `Welcome ${user.username}`,
           jwt: token,
@@ -39,6 +42,7 @@ authRouter
             username: user.username,
             email: user.email,
             role: user.role,
+            children: children,
           },
         });
       } else {
