@@ -42,7 +42,7 @@ authRouter
             username: user.username,
             email: user.email,
             role: user.role,
-            children: children,
+            children: children ? children : [],
           },
         });
       } else {
